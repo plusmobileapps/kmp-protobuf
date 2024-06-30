@@ -11,7 +11,7 @@ object DogApi {
 
     suspend fun getDog(): Result<Dog> = withContext(Dispatchers.IO) {
         try {
-            val response: HttpResponse = httpClient.get("http://localhost:8080/")
+            val response: HttpResponse = httpClient.get("$baseUrl:8080/")
             val dog: Dog = response.receiveProtoBuf(Dog.ADAPTER)
             Result.success(dog)
         } catch (e: Exception) {
