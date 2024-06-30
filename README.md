@@ -17,3 +17,9 @@ This is a Kotlin Multiplatform project targeting Android, iOS, Desktop, Server.
 
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+
+## Libraries
+
+* [Wire](https://github.com/square/wire) - KMP protobuf gradle plugin
+* [Ktor Content Negotiation](https://ktor.io/docs/serialization.html)
+* [Kotlinx Serialization Protobuf](https://kotlinlang.org/api/kotlinx.serialization/kotlinx-serialization-protobuf/kotlinx.serialization.protobuf/-proto-buf/)

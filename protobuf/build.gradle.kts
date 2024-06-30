@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.wire)
 }
 
 kotlin {
@@ -13,23 +14,22 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-    
+
     jvm()
-    
+
     sourceSets {
         commonMain.dependencies {
             // put your Multiplatform dependencies here
-            implementation(projects.protobuf)
         }
     }
 }
 
 android {
-    namespace = "com.plusmobileapps.protobuf.shared"
+    namespace = "com.plusmobileapps.protobuf.model"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -38,4 +38,8 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
+}
+
+wire {
+    kotlin {}
 }

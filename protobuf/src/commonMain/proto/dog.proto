@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package com.plusmobileapps.protobuf;
+
+message Dog {
+    string name = 1;
+    string breed = 2;
+    string birthday = 3; // format: YYYY-MM-DD
+}
