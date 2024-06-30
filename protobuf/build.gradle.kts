@@ -26,6 +26,10 @@ kotlin {
             // put your Multiplatform dependencies here
         }
     }
+
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
 }
 
 android {
