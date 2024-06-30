@@ -25,7 +25,6 @@ kotlin {
             api(projects.protobuf)
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)
-            implementation(libs.ktor.protobuf)
         }
 
         jvmMain.dependencies {
