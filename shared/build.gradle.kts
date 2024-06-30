@@ -22,8 +22,20 @@ kotlin {
     
     sourceSets {
         commonMain.dependencies {
-            // put your Multiplatform dependencies here
-            implementation(projects.protobuf)
+            api(projects.protobuf)
+            implementation(libs.ktor.client.core)
+        }
+
+        jvmMain.dependencies {
+            implementation(libs.ktor.client.engine.java)
+        }
+
+        iosMain.dependencies {
+            implementation(libs.ktor.client.engine.darwin)
+        }
+
+        androidMain.dependencies {
+            implementation(libs.ktor.client.engine.android)
         }
     }
 }
