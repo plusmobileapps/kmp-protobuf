@@ -38,6 +38,10 @@ kotlin {
             implementation(libs.ktor.client.engine.android)
         }
     }
+
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
 }
 
 android {

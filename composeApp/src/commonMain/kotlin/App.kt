@@ -31,9 +31,7 @@ fun App() {
         val scope = rememberCoroutineScope()
         LaunchedEffect(Unit) {
             scope.launch {
-                DogApi.getDog()
-                    .onSuccess { dog -> state = UiState.Loaded(dog) }
-                    .onFailure { exception -> state = UiState.Error(exception) }
+                fetchDog { newState -> state = newState }
             }
         }
 
@@ -54,11 +52,8 @@ fun App() {
                 is UiState.Error -> {
                     Text("Error: ${currentState.exception.message}")
                     Button(onClick = {
-                        state = UiState.Loading
                         scope.launch {
-                            DogApi.getDog()
-                                .onSuccess { dog -> state = UiState.Loaded(dog) }
-                                .onFailure { exception -> state = UiState.Error(exception) }
+                            fetchDog { newState -> state = newState }
                         }
                     }) {
                         Text("Retry")
@@ -67,4 +62,11 @@ fun App() {
             }
         }
     }
+}
+
+private suspend fun fetchDog(result: (UiState) -> Unit) {
+    result(UiState.Loading)
+    DogApi.getDog()
+        .onSuccess { dog -> result(UiState.Loaded(dog)) }
+        .onFailure { exception -> result(UiState.Error(exception)) }
 }

@@ -50,6 +50,11 @@ kotlin {
             implementation(compose.desktop.currentOs)
         }
     }
+
+
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
 }
 
 android {
